@@ -1,0 +1,7 @@
+### python
+>ubuntu 下安装mysqldb
+sudo apt-get install python-mysqldb
+python 连接 mysql
+```python
+
+```
