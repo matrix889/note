@@ -53,3 +53,11 @@ curs.close()
 curs.close()
 
 ```
+### SomeThing to read
+[python+mysql](http://blog.csdn.net/yelbosh/article/details/7498641)
+[k-Means](http://blog.csdn.net/jairuschan/article/details/7516989)
+[python-theano](http://wiki.swarma.net/index.php?title=%E5%88%A9%E7%94%A8python%E7%9A%84theano%E5%BA%93%E5%88%B7kaggle_mnist%E6%8E%92%E8%A1%8C%E6%A6%9C&variant=zh-cn)
+[Deep-learning](http://blog.csdn.net/u012162613/article/details/42651233)
+[kaggle](http://doc.okbase.net/u012162613/archive/118848.html)
+[to_use_kaggle](blog.csdn.net/u012162613/article/details/41929171)
+[numpy](http://blog.csdn.net/u012162613/article/details/42784403)
