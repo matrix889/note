@@ -29,3 +29,15 @@ for i in range(0, t):
 		print "%.2f\n" % float(int(n[0]) * int(n[1])) 
 
 ```
+
+### 数据结构
+
+#### 3635 Cinema in Akiba
+
+1. 题目大意：
+&emsp;&emsp;有一排座位共N个，然后有N个人，每次给一个xi，从左到右数到第xi个空位，这个空位就安排给第i个人，接着就有一系列询问要找第i个人的位置。
+
+2. 思路：
+&emsp;&emsp;用线段树或者树状数组维护前n个位置中有多少个位置已经被占用，容易得到，n个位置中空位的个数单调递增，因此，二分每个人分配到的座位号即可。
+
+3. Link: [ZOJ 3635](acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4803)
