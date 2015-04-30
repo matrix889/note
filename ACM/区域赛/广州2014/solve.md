@@ -24,3 +24,14 @@ DFS+剪枝,枚举每一条边被放到了哪一个三角形中。一个很重要
 
 #### Link:
 [HDU 5135](http://acm.hdu.edu.cn/showproblem.php?pid=5135)
+
+### K.How Many Maos Does the Guanxi Worth
+
+#### 题目大意：
+给出n个点，m条边，求去掉某个点之后的1到n的最短路。
+
+#### 思路：
+因为n<=30,所以直接枚举去掉的点，求出最短路即可。
+
+#### Link：
+[HDU 5137](http://acm.hdu.edu.cn/showproblem.php?pid=5137)

@@ -11,3 +11,17 @@ $$dp_{[i,j]} = dp_{[i-1,j]}{(a[i] == c[i+j])} &ensp; || &ensp; dp_{[i,j-1]}(b[j]
 
 3. Link:
 [HDU 1501](http://acm.hdu.edu.cn/showproblem.php?pid=1501)
+
+### 图论
+#### 1599 find the mincost route
+
+1. 题目大意：
+&emsp;&emsp; 给出一个有n个顶点，n条边的无向图，求它的最小环。
+
+2. 思路：
+&emsp;&emsp;floyed求最小环模板题，需要注意的有两点，第一就是两个点之间可能不止一条边，第二就是，不能将INF设置为0x3f3f3f3f，因为这样INF*3之后超出了int的范围。
+
+3. Link:
+[HDU 1599](http://acm.hdu.edu.cn/showproblem.php?pid=1599)
+
+
