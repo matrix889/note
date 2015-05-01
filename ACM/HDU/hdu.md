@@ -24,4 +24,17 @@ $$dp_{[i,j]} = dp_{[i-1,j]}{(a[i] == c[i+j])} &ensp; || &ensp; dp_{[i,j-1]}(b[j]
 3. Link:
 [HDU 1599](http://acm.hdu.edu.cn/showproblem.php?pid=1599)
 
+### 思路题
+#### 1759 Matrix Revolution
 
+1. 题目大意：
+&emsp;&emsp;对于一个矩阵A，求$A+A^2+\cdots+A^k$,(A为n*n的矩阵，A中的元素值$\leq$0,k>n)，求结果矩阵中有多少个非0元素。
+
+2. 思路：
+&emsp;&emsp;用矩阵来表示一个图，则矩阵A表示图中有没有长度两个点之间有没有长度为1的路径，$A^2$表示有没有长度为2的路径，$\cdots$以此类推，所以之间建图后，进行n次的bfs，即可求出答案。
+
+3. Code:
+[1759.cpp](1759.cpp)
+
+4. Link:
+[HDU 1759](acm.hdu.edu.cn/showproblem.php?pid=1759)
