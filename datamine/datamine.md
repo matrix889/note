@@ -47,12 +47,60 @@ try:
 	conn.commit()
 except:
 	conn.rollback()
-
+sphinx
 conn.commit()
 curs.close()
 curs.close()
 
 ```
+
+### 安装 Scikit Learn:
+>pip install -U scikit-learn
+
+* Scikit learn帮助文档编译：
+```
+sudo apt-get install sphinxsearch
+sudo apt-get install python-sphinx
+```
+
+```python
+python
+from sklearn import datasets
+iris = datasets.load_iris()
+iris.data.shape 
+```
+
+### python csv模块的使用：
+
+```python
+#读入
+import csv
+with open('test.csv','rb') as myFile:
+    lines=csv.reader(myFile)
+    for line in lines:
+        print line
+
+#写入
+with open('t.csv','wb') as myFile:      
+    myWriter=csv.writer(myFile)  
+    myWriter.writerow([7,'g'])  
+    myWriter.writerow([8,'h'])  
+    myList=[[1,2,3],[4,5,6]]  
+    myWriter.writerows(myList)  
+
+```
+* [参考资料](http://blog.csdn.net/u012162613/article/details/41915859)
+
+### pandas
+```
+sudo apt-get install python-pandas
+```
+[Python 数据分析包：pandas 基础](http://www.open-open.com/lib/view/open1402477162868.html)
+
+### Numpy
+[Numpy 基础](http://blog.csdn.net/u012162613/article/details/42784403)
+[Numpy 教程](http://sebug.net/paper/books/scipydoc/numpy_intro.html)
+
 ### SomeThing to read
 [python+mysql](http://blog.csdn.net/yelbosh/article/details/7498641)
 [k-Means](http://blog.csdn.net/jairuschan/article/details/7516989)
