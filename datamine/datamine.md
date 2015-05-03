@@ -54,8 +54,15 @@ curs.close()
 
 ```
 
+### 安装pip
+```
+sudo apt-get install python-pip python-dev build-essential 
+sudo pip install --upgrade pip 
+sudo pip install --upgrade virtualenv 
+
+```
 ### 安装 Scikit Learn:
->pip install -U scikit-learn
+>sudo pip install -U scikit-learn
 
 * Scikit learn帮助文档编译：
 ```
