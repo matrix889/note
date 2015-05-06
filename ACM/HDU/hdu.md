@@ -38,3 +38,6 @@ $$dp_{[i,j]} = dp_{[i-1,j]}{(a[i] == c[i+j])} &ensp; || &ensp; dp_{[i,j-1]}(b[j]
 
 4. Link:
 [HDU 1759](http://acm.hdu.edu.cn/showproblem.php?pid=1759)
+
+### 测题帐号
+SCNU20102200088 15975193536
