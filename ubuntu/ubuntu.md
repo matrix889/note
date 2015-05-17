@@ -26,3 +26,21 @@ vimtutor:linux下自带vim教程
 [如何使用vim](http://www.zhihu.com/question/20565366)
 [vim to amcer](http://www.cnblogs.com/ma6174/archive/2012/02/02/2335835.html)
 [how to use vim](http://www.iplaysoft.com/vim.html)
+
+#### 右键打开终端：
+
+1. 把终端加到右键菜单：
+```
+sudo apt-get install nautilus-open-terminal
+```
+
+2. 右键单击文件或文件夹以 root 权限打开：
+```
+sudo apt-get install nautilus-gksu
+```
+
+3. 重新加载文件夹
+```
+nautilus -q
+```
+
