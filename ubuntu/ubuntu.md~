@@ -4,3 +4,43 @@
 #### aria2
 1. 安装： sudo apt-get install aria2
 2. 使用： aria2c http://.....
+
+#### vim 快捷键
+vimtutor:linux下自带vim教程
+* 交换两个字符的位置：xp   
+* 交换两行的位置：ddp  
+* 调换两个单词（光标开始处于第一个单词的左边）：deep
+* 10.2 复制与移动行
+
+语法：
+
+       :x,ycoz
+
+       :x,ymz
+
+说明：
+1      x，y，z都是行号。x，y是源行，z是目标行号。
+2      源行x,y被复制或移动，插入到z行的下面。
+3      :m删除原始行，:co不删除原始行。
+
+[如何使用vim](http://www.zhihu.com/question/20565366)
+[vim to amcer](http://www.cnblogs.com/ma6174/archive/2012/02/02/2335835.html)
+[how to use vim](http://www.iplaysoft.com/vim.html)
+
+#### 右键打开终端：
+
+1. 把终端加到右键菜单：
+```
+sudo apt-get install nautilus-open-terminal
+```
+
+2. 右键单击文件或文件夹以 root 权限打开：
+```
+sudo apt-get install nautilus-gksu
+```
+
+3. 重新加载文件夹
+```
+nautilus -q
+```
+

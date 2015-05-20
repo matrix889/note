@@ -13,6 +13,7 @@ sudo apt-get install libxext6 libxext-dev libqt4-dev libqt4-gui libqt4-sql qt4-d
 
 [参考](http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html)
 [Book](http://zetcode.com/gui/pyqt4/introduction/)
+[what](http://www.cnblogs.com/rollenholt/archive/2011/11/16/2251904.html)
 
 #### 官方文档:
 

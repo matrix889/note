@@ -44,3 +44,6 @@ sudo apt-get install nautilus-gksu
 nautilus -q
 ```
 
+#### teamviewer
+
+[how to install](http://askubuntu.com/questions/362951/installed-teamviewer-using-a-64-bits-system-but-i-get-a-dependency-error)
