@@ -11,3 +11,7 @@ sudo apt-get install bison
 flex cfile.l
 cc lex.yy.c -lfl
 ```
+
+### 参考:
+
+1. [参考]http://www.ibm.com/developerworks/cn/linux/l-flexbison.html#resources()
