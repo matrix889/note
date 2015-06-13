@@ -446,7 +446,7 @@ static const yytype_uint8 yyrline[] =
 {
        0,    37,    37,    38,    39,    40,    43,    44,    52,    53,
       54,    55,    56,    57,    58,    59,    60,    61,    62,    63,
-      64,    67,    68,    70,    71,    74,    75,    80,    84
+      64,    67,    68,    70,    71,    74,    75,    81,    86
 };
 #endif
 
@@ -1392,29 +1392,31 @@ yyreduce:
   case 26:
 #line 75 "work.y" /* yacc.c:1646  */
     {
-    if(debug) dumpast((yyvsp[-1].a), 0);
-     printf("= %4.4g\n> ", eval((yyvsp[-1].a)));
+    if(debug) dumpast((yyvsp[-1].a), 0, 0);
+     //printf("= %4.4g\n> ", eval($2));
+     printf("= %4.4g\n", eval((yyvsp[-1].a)));
      treefree((yyvsp[-1].a));
     }
-#line 1400 "work.tab.c" /* yacc.c:1646  */
+#line 1401 "work.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 80 "work.y" /* yacc.c:1646  */
+#line 81 "work.y" /* yacc.c:1646  */
     {
                        dodef((yyvsp[-7].s), (yyvsp[-5].sl), (yyvsp[-2].a));
-                       printf("Defined %s\n> ", (yyvsp[-7].s)->name); }
-#line 1408 "work.tab.c" /* yacc.c:1646  */
+                       //printf("Defined %s\n> ", $3->name); 
+                       printf("Defined %s\n", (yyvsp[-7].s)->name);}
+#line 1410 "work.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 84 "work.y" /* yacc.c:1646  */
+#line 86 "work.y" /* yacc.c:1646  */
     { yyerrok; printf("> "); }
-#line 1414 "work.tab.c" /* yacc.c:1646  */
+#line 1416 "work.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1418 "work.tab.c" /* yacc.c:1646  */
+#line 1420 "work.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1642,5 +1644,5 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 86 "work.y" /* yacc.c:1906  */
+#line 88 "work.y" /* yacc.c:1906  */
 

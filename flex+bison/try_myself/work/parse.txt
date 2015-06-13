@@ -1,0 +1,29 @@
+Assignment to: flag
+  number    0
+=    0
+IF-statement
+  binop ==
+    ref flag
+    number    0
+  binop L
+    Assignment to: sum
+      number    0
+    binop L
+      Assignment to: i
+        number    0
+      WHILE-statement
+        binop <=
+          ref i
+          number    4
+        binop L
+          Assignment to: sum
+            binop +
+              ref sum
+              ref i
+          Assignment to: i
+            binop +
+              ref i
+              number    1
+=    5
+Defined div
+Defined sum

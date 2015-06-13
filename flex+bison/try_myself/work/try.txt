@@ -7,3 +7,14 @@ if (flag == 0) then{\
 		i = i + 1;\
 	};\
 }
+function div(x){\
+	x = x / 2;\
+}
+function sum(x){\
+	i = 0;\
+	sum = 0;\
+	while (i <= 10) do{\
+		sum = sum + i; \
+		i = i + 1;\
+	};\
+}

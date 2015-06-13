@@ -291,6 +291,8 @@ callbuiltin(struct fncall *f)
  case B_print:
    printf("= %4.4g\n", v);
    return v;
+ case B_random:
+    return rand() % (int)v;
  default:
    yyerror("Unknown built-in function %d", functype);
    return 0.0;
@@ -425,17 +427,22 @@ yyerror(char *s, ...)
 int
 main()
 {
-  printf("> "); 
+  freopen("try.txt", "r", stdin);
+  freopen("parse.txt", "w", stdout); 
+  // printf("> "); 
   return yyparse();
 }
 
 /* debugging: dump out an AST */
-int debug = 0;
+int debug = 1;
+char s[][6] = {">", "<", "<>", "==", ">=", "<="}; 
+char funName[][8] = {"sqrt", "exp", "log", "print", "random"};
 void
-dumpast(struct ast *a, int level)
+dumpast(struct ast *a, int level, int inList)
 {
 
   printf("%*s", 2*level, "");	/* indent to this level */
+  // level += (1 - inList);
   level++;
 
   if(!a) {
@@ -451,42 +458,54 @@ dumpast(struct ast *a, int level)
   case 'N': printf("ref %s\n", ((struct symref *)a)->s->name); break;
 
     /* assignment */
-  case '=': printf("= %s\n", ((struct symref *)a)->s->name);
-    dumpast( ((struct symasgn *)a)->v, level); return;
+  case '=': printf("Assignment to: %s\n", ((struct symref *)a)->s->name);
+    dumpast( ((struct symasgn *)a)->v, level, 0); return;
 
     /* expressions */
+  // case 'L':
+  //   dumpast(a->l, level, 1);
+  //   dumpast(a->r, level, 1);
+  //   return;
   case '+': case '-': case '*': case '/': case 'L':
   case '1': case '2': case '3':
   case '4': case '5': case '6': 
-    printf("binop %c\n", a->nodetype);
-    dumpast(a->l, level);
-    dumpast(a->r, level);
+    if (a->nodetype >= '1' && a->nodetype <= '6')
+      printf("binop %s\n", s[a->nodetype-'1']);
+    else
+      printf("binop %c\n", a->nodetype);
+
+    dumpast(a->l, level, 0);
+    dumpast(a->r, level, 0);
     return;
 
   case '|': case 'M': 
     printf("unop %c\n", a->nodetype);
-    dumpast(a->l, level);
+    dumpast(a->l, level, 0);
     return;
 
   case 'I': case 'W':
-    printf("flow %c\n", a->nodetype);
-    dumpast( ((struct flow *)a)->cond, level);
+    // printf("flow %c\n", a->nodetype);
+    if (a->nodetype == 'I') printf("IF-statement\n");
+    else printf("WHILE-statement\n");
+
+    dumpast( ((struct flow *)a)->cond, level, 0);
     if( ((struct flow *)a)->tl)
-      dumpast( ((struct flow *)a)->tl, level);
+      dumpast( ((struct flow *)a)->tl, level, 0);
     if( ((struct flow *)a)->el)
-      dumpast( ((struct flow *)a)->el, level);
+      dumpast( ((struct flow *)a)->el, level, 0);
     return;
 	              
   case 'F':
-    printf("builtin %d\n", ((struct fncall *)a)->functype);
-    dumpast(a->l, level);
+    printf("builtin %s\n", funName[((struct fncall *)a)->functype-1]);
+    dumpast(a->l, level, 0);
     return;
 
   case 'C': printf("call %s\n", ((struct ufncall *)a)->s->name);
-    dumpast(a->l, level);
+    dumpast(a->l, level, 0);
     return;
 
   default: printf("bad %c\n", a->nodetype);
     return;
   }
 }
+  

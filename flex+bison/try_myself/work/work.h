@@ -38,7 +38,8 @@ enum bifs {			/* built-in functions */
   B_sqrt = 1,
   B_exp,
   B_log,
-  B_print
+  B_print,
+  B_random
 };
 
 /* nodes in the Abstract Syntax Tree */
@@ -109,5 +110,5 @@ extern int yylineno; /* from lexer */
 void yyerror(char *s, ...);
 
 extern int debug;
-void dumpast(struct ast *a, int level);
+void dumpast(struct ast *a, int level, int inList);
 

@@ -73,13 +73,15 @@ symlist: NAME       { $$ = newsymlist($1, NULL); }
 
 calclist: /* nothing */
   | calclist stmt EOL {
-    if(debug) dumpast($2, 0);
-     printf("= %4.4g\n> ", eval($2));
+    if(debug) dumpast($2, 0, 0);
+     //printf("= %4.4g\n> ", eval($2));
+     printf("= %4.4g\n", eval($2));
      treefree($2);
     }
   | calclist FUNCTION NAME '(' symlist ')' '{' list '}' EOL {
                        dodef($3, $5, $8);
-                       printf("Defined %s\n> ", $3->name); }
+                       //printf("Defined %s\n> ", $3->name); 
+                       printf("Defined %s\n", $3->name);}
 
   | calclist error EOL { yyerrok; printf("> "); }
  ;
