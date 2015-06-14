@@ -1,29 +1,206 @@
 Assignment to: flag
   number    0
 =    0
-IF-statement
+
+IF-statement:
   binop ==
     ref flag
     number    0
-  binop L
+  IF_PART:
     Assignment to: sum
       number    0
-    binop L
-      Assignment to: i
-        number    0
-      WHILE-statement
-        binop <=
-          ref i
-          number    4
-        binop L
-          Assignment to: sum
-            binop +
-              ref sum
-              ref i
-          Assignment to: i
-            binop +
-              ref i
-              number    1
+    Assignment to: i
+      number    0
+    WHILE-statement:
+      binop <=
+        ref i
+        number    4
+      WHILE_PART:
+        Assignment to: sum
+          binop +
+            ref sum
+            ref i
+        Assignment to: i
+          binop +
+            ref i
+            number    1
 =    5
-Defined div
-Defined sum
+
+Defined sum:
+  Assignment to: i
+    number    0
+  Assignment to: sum
+    number    0
+  WHILE-statement:
+    binop <=
+      ref i
+      number   10
+    WHILE_PART:
+      Assignment to: sum
+        binop +
+          ref sum
+          ref i
+      Assignment to: i
+        binop +
+          ref i
+          number    1
+
+Defined div:
+  Assignment to: x
+    binop /
+      ref x
+      number    2
+
+Defined sum:
+  Assignment to: x
+    binop /
+      ref x
+      number    2
+  Assignment to: i
+    number    0
+  Assignment to: sum
+    number    0
+  WHILE-statement:
+    binop <=
+      ref i
+      number   10
+    WHILE_PART:
+      Assignment to: sum
+        binop +
+          ref sum
+          ref i
+      Assignment to: i
+        binop +
+          ref i
+          number    1
+
+Defined fewerArgs:
+  Assignment to: x
+    binop +
+      ref x
+      ref y
+
+Assignment to: y
+  number   76
+=   76
+
+ref y
+=   76
+
+Assignment to: x
+  call su
+    number    5
+=    0
+
+ref x
+=    0
+
+call fewerArgs
+  ref x
+=    0
+
+Assignment to: x
+  call sum
+      number    4
+      number    5
+=   11
+
+Assignment to: x
+  binop +
+    ref x
+    unop M
+      number    5
+=    6
+
+Assignment to: x
+  call sum
+    number    5
+=   11
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+=    0
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+=    0
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+  IF_PART:
+    Assignment to: x
+      number    3
+    Assignment to: x
+      binop +
+        ref x
+        number    2
+  ELSE_PART:
+    Assignment to: x
+      number    4
+    Assignment to: x
+      binop +
+        ref x
+        number    1
+=    5
+
+IF-statement:
+  binop >
+    ref x
+    number    4
+  IF_PART:
+  Assignment to: x
+    number    5
+=    5
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+  IF_PART:
+    Assignment to: x
+      number    3
+    Assignment to: x
+      binop +
+        ref x
+        number    2
+  ELSE_PART:
+    Assignment to: x
+      number    4
+    Assignment to: x
+      binop +
+        ref x
+        number    1
+=    5
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+=    0
+
+IF-statement:
+  binop ==
+    ref x
+    number    5
+  IF_PART:
+    Assignment to: x
+      number    3
+    Assignment to: x
+      binop +
+        ref x
+        number    2
+  ELSE_PART:
+    Assignment to: x
+      number    4
+    Assignment to: x
+      binop +
+        ref x
+        number    1
+=    5
+

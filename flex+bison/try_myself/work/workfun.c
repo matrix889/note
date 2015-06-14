@@ -440,10 +440,12 @@ char funName[][8] = {"sqrt", "exp", "log", "print", "random"};
 void
 dumpast(struct ast *a, int level, int inList)
 {
-
-  printf("%*s", 2*level, "");	/* indent to this level */
+  if (a->nodetype != 'L')
+    printf("%*s", 2*level, "");	/* indent to this level */
   // level += (1 - inList);
-  level++;
+  // level++;
+  if (inList == 1 && a->nodetype != 'L') inList = 0;
+  level += 1 - inList;
 
   if(!a) {
     printf("NULL\n");
@@ -466,7 +468,12 @@ dumpast(struct ast *a, int level, int inList)
   //   dumpast(a->l, level, 1);
   //   dumpast(a->r, level, 1);
   //   return;
-  case '+': case '-': case '*': case '/': case 'L':
+  case 'L':
+    // printf("binop %c\n", a->nodetype);
+    dumpast(a->l, level, 0);
+    dumpast(a->r, level, 1);
+    return;
+  case '+': case '-': case '*': case '/': 
   case '1': case '2': case '3':
   case '4': case '5': case '6': 
     if (a->nodetype >= '1' && a->nodetype <= '6')
@@ -485,14 +492,21 @@ dumpast(struct ast *a, int level, int inList)
 
   case 'I': case 'W':
     // printf("flow %c\n", a->nodetype);
-    if (a->nodetype == 'I') printf("IF-statement\n");
-    else printf("WHILE-statement\n");
+    if (a->nodetype == 'I') printf("IF-statement:\n");
+    else printf("WHILE-statement:\n");
 
     dumpast( ((struct flow *)a)->cond, level, 0);
-    if( ((struct flow *)a)->tl)
+    if( ((struct flow *)a)->tl){
+      printf("%*s", 2*level, "");
+      if (a->nodetype == 'I') printf("IF_PART:\n");
+      else printf("WHILE_PART:\n");
       dumpast( ((struct flow *)a)->tl, level, 0);
-    if( ((struct flow *)a)->el)
+    }
+    if( ((struct flow *)a)->el){
+      printf("%*s", 2*level, "");
+      printf("ELSE_PART:\n");
       dumpast( ((struct flow *)a)->el, level, 0);
+    }
     return;
 	              
   case 'F':

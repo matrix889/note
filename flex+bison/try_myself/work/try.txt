@@ -1,8 +1,16 @@
-flag = 0
+flag = 0//这里是注释
 if (flag == 0) then{\
 	sum = 0; \
 	i = 0; \
 	while (i <= 4) do{\
+		sum = sum + i; \
+		i = i + 1;\
+	};\
+}//try
+function sum(x){\
+	i = 0;\
+	sum = 0;\
+	while (i <= 10) do{\
 		sum = sum + i; \
 		i = i + 1;\
 	};\
@@ -11,10 +19,54 @@ function div(x){\
 	x = x / 2;\
 }
 function sum(x){\
+	x = x / 2;\
 	i = 0;\
 	sum = 0;\
 	while (i <= 10) do{\
 		sum = sum + i; \
 		i = i + 1;\
 	};\
+}
+function fewerArgs(x, y){\
+	x = x + y;\
+}
+y = 76
+y
+x = su(5)
+x
+fewerArgs(x)
+x = sum(4, 5)
+x = x +-5
+x = x */ 6
+x = sum(5)
+if (x == 5) then {}
+if (x == 5){}
+if (x == 5) then{\
+	x = 3;\
+	x = x + 2;\
+}\
+else{\
+	x = 4;\
+	x = x + 1;\
+}
+if (x > 4) then {\
+	x = 5;\
+}
+if (x == 5){\
+	x = 3;\
+	x = x + 2;\
+}\
+else{\
+	x = 4;\
+	x = x + 1;\
+}
+if (x == 5) then {}\
+{}
+if (x == 5) then{\
+	x = 3;\
+	x = x + 2;\
+}\
+{\
+	x = 4;\
+	x = x + 1;\
 }

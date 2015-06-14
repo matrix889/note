@@ -35,7 +35,19 @@
 %%
 
 stmt: IF exp THEN '{' list '}'           { $$ = newflow('I', $2, $5, NULL); }
+   | IF exp '{' list '}'   {
+      yyerror("lack the THEN in the IF-STATEMENT!!!");
+      $$ = newflow('I', $2, $4, NULL); 
+   }
    | IF exp THEN '{' list '}' ELSE '{' list '}' { $$ = newflow('I', $2, $5, $9); }
+   | IF exp '{' list '}' ELSE '{' list '}' { 
+        yyerror("lack the THEN in the IF-STATEMENT!!!");
+        $$ = newflow('I', $2, $4, $8); 
+      }
+   | IF exp THEN '{' list '}' '{' list '}' { 
+      yyerror("lack the ELSE in the IF-STATEMENT!!!");
+      $$ = newflow('I', $2, $5, $8); 
+    }
    | WHILE exp DO '{' list '}'      { $$ = newflow('W', $2, $5, NULL); }
    | exp
 ;
@@ -75,14 +87,20 @@ calclist: /* nothing */
   | calclist stmt EOL {
     if(debug) dumpast($2, 0, 0);
      //printf("= %4.4g\n> ", eval($2));
-     printf("= %4.4g\n", eval($2));
-     treefree($2);
+      printf("= %4.4g\n", eval($2));
+      printf("\n");
+      treefree($2);
     }
   | calclist FUNCTION NAME '(' symlist ')' '{' list '}' EOL {
                        dodef($3, $5, $8);
                        //printf("Defined %s\n> ", $3->name); 
-                       printf("Defined %s\n", $3->name);}
+                       printf("Defined %s:\n", $3->name);
+                       if (debug) dumpast($8, 1, 1);
+                        printf("\n");
+                       }
 
-  | calclist error EOL { yyerrok; printf("> "); }
+  | calclist error EOL { yyerrok; 
+                          //printf("> "); 
+                        }
  ;
 %%
