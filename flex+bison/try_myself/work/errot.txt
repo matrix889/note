@@ -1,0 +1,7 @@
+36: error: call to undefined function
+38: error: too few args in call to fewerArgs
+40: error: syntax error
+44: error: lack the THEN in the IF-STATEMENT!!!
+62: error: lack the THEN in the IF-STATEMENT!!!
+64: error: lack the ELSE in the IF-STATEMENT!!!
+72: error: lack the ELSE in the IF-STATEMENT!!!

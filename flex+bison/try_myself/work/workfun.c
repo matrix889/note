@@ -427,8 +427,8 @@ yyerror(char *s, ...)
 int
 main()
 {
-  freopen("try.txt", "r", stdin);
-  freopen("parse.txt", "w", stdout); 
+  // freopen("try.txt", "r", stdin);
+  // freopen("parse.txt", "w", stdout); 
   // printf("> "); 
   return yyparse();
 }
