@@ -3,6 +3,7 @@
 #  include <stdarg.h>
 #  include <string.h>
 #  include <math.h>
+#  include <time.h>
 #  include "work.h"
 
 /* symbol table */
@@ -280,6 +281,7 @@ callbuiltin(struct fncall *f)
 {
   enum bifs functype = f->functype;
   double v = eval(f->l);
+  FILE *fp;
 
  switch(functype) {
  case B_sqrt:
@@ -289,13 +291,13 @@ callbuiltin(struct fncall *f)
  case B_log:
    return log(v);
  case B_print:
-   FILE *fp;
    fp = fopen("result.txt", "aw");
    fprintf(fp, "= %4.4g\n", v); 
+   fclose(fp);
    // printf("= %4.4g\n", v);
    return v;
  case B_random:
-    return rand() % (int)v;
+    return rand() % (int)(v+1);
  default:
    yyerror("Unknown built-in function %d", functype);
    return 0.0;
@@ -433,6 +435,8 @@ main()
   // freopen("try.txt", "r", stdin);
   // freopen("parse.txt", "w", stdout); 
   // printf("> "); 
+  srand(time(0));
+  system("rm -f result.txt");
   return yyparse();
 }
 
