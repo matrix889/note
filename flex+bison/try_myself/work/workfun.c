@@ -289,7 +289,10 @@ callbuiltin(struct fncall *f)
  case B_log:
    return log(v);
  case B_print:
-   printf("= %4.4g\n", v);
+   FILE *fp;
+   fp = fopen("result.txt", "aw");
+   fprintf(fp, "= %4.4g\n", v); 
+   // printf("= %4.4g\n", v);
    return v;
  case B_random:
     return rand() % (int)v;
