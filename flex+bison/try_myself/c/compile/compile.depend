@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1434456423 source:/home/wzx/git/note/flex+bison/try_myself/c/compile/main.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<cstdio>
+	<cstring>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<vector>
+	<algorithm>
+

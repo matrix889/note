@@ -1,0 +1,53 @@
+function T1(gameRows, Ones, pre, prePre){\
+	print(1);\
+}
+function T2(gameRows, Ones, pre, prePre){\
+	i = random(3);\
+	if (i == 3) then{\
+		print(0);\
+	}\
+	else{\
+		print(1);\
+	};\
+}
+function T3(gameRows, Ones, pre, prePre){\
+	if (gameRows == 1) then{\
+		print(1);\
+	}\
+	else{\
+		print(pre);\
+	};\
+}
+function T4(gameRows, Ones, pre, prePre){\
+	if (gameRows == 1) then{\
+		print(1);\
+	}\
+	else{\
+		i = random(9);\
+		if (i == 9) then{\
+			print(1);\
+		}\
+		else{\
+			print(pre);\
+		};\
+	};\
+}
+function T5(gameRows, Ones, pre, prePre){\
+	i = 1;\
+	k = 1;\
+	if (gameRows == 1) then{\
+		print(1);\
+	}\
+	else{\
+		if (Ones > 0) then{\
+			print(0);\
+		}\
+		else{\
+			print(1);\
+		};\
+	};\
+}
+T1(1, 1, 1, 1)
+T2(1, 1, 1, 1)
+T2(1, 1, 1, 1)
+T2(1, 1, 1, 1)
