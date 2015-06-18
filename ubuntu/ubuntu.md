@@ -47,3 +47,18 @@ nautilus -q
 #### teamviewer
 
 [how to install](http://askubuntu.com/questions/362951/installed-teamviewer-using-a-64-bits-system-but-i-get-a-dependency-error)
+
+4. 问题： lock
+
+运行程序更新时出现报错：
+
+无法获得锁 /var/lib/dpkg/lock - open (11: 资源临时不可用)
+
+解决：
+其实这是因为有另外一个程序在运行，导致锁不可用。原因可能是上次运行更新或安装没有正常完成。解决办法是杀死此进程
+>sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+
+5. 更新：
+>sudo apt-get update
+sudo apt-get upgrape
