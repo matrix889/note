@@ -1,0 +1,4 @@
+Defined T:
+  builtin print
+    number    1
+

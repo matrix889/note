@@ -1,0 +1,15 @@
+Defined T:
+  Assignment to: i
+    builtin random
+      number   10
+  IF-statement:
+    binop <
+      ref i
+      number    3
+    IF_PART:
+    builtin print
+      number    1
+    ELSE_PART:
+    builtin print
+      number    0
+

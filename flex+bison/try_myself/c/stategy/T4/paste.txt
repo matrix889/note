@@ -21,10 +21,3 @@ Defined T:
         builtin print
           ref pre
 
-call T
-    number   10
-    number    1
-    number    0
-    number    0
-=    0
-

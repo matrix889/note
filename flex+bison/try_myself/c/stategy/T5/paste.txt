@@ -1,0 +1,24 @@
+Defined T:
+  Assignment to: i
+    number    1
+  Assignment to: k
+    number    1
+  IF-statement:
+    binop ==
+      ref gameRows
+      number    1
+    IF_PART:
+    builtin print
+      number    1
+    ELSE_PART:
+    IF-statement:
+      binop >
+        ref Ones
+        number    0
+      IF_PART:
+      builtin print
+        number    0
+      ELSE_PART:
+      builtin print
+        number    1
+

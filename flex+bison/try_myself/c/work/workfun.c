@@ -224,6 +224,10 @@ eval(struct ast *a)
   case '=': v = ((struct symasgn *)a)->s->value =
       eval(((struct symasgn *)a)->v); break;
 
+    /* logical operator */
+  case 'A': v = (eval(a->l)>0) && (eval(a->r) > 0); break;
+  case 'O': v = (eval(a->r)>0) || (eval(a->r) > 0); break; 
+
     /* expressions */
   case '+': v = eval(a->l) + eval(a->r); break;
   case '-': v = eval(a->l) - eval(a->r); break;

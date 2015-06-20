@@ -55,8 +55,10 @@ extern int yydebug;
     WHILE = 265,
     DO = 266,
     FUNCTION = 267,
-    CMP = 268,
-    UMINUS = 269
+    AND = 268,
+    OR = 269,
+    CMP = 270,
+    UMINUS = 271
   };
 #endif
 
@@ -73,7 +75,7 @@ union YYSTYPE
   struct symlist *sl;
   int fn;			/* which function */
 
-#line 77 "work.tab.h" /* yacc.c:1909  */
+#line 79 "work.tab.h" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

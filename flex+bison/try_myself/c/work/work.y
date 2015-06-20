@@ -19,12 +19,14 @@
 %token EOL
 
 %token IF THEN ELSE WHILE DO FUNCTION
+%token AND OR
 
 
 %nonassoc <fn> CMP
 %right '='
 %left '+' '-'
 %left '*' '/'
+%left AND OR
 %nonassoc '|' UMINUS
 
 %type <a> exp stmt list explist
@@ -66,6 +68,8 @@ exp: exp CMP exp          { $$ = newcmp($2, $1, $3); }
    | exp '-' exp          { $$ = newast('-', $1,$3);}
    | exp '*' exp          { $$ = newast('*', $1,$3); }
    | exp '/' exp          { $$ = newast('/', $1,$3); }
+   | exp AND exp        { $$ = newast('A', $1, $3); }
+   | exp OR exp         { $$ = newast('O', $1, $3);}
    | '|' exp              { $$ = newast('|', $2, NULL); }
    | '(' exp ')'          { $$ = $2; }
    | '-' exp %prec UMINUS { $$ = newast('M', $2, NULL); }

@@ -1,0 +1,12 @@
+Defined T:
+  IF-statement:
+    binop ==
+      ref gameRows
+      number    1
+    IF_PART:
+    builtin print
+      number    1
+    ELSE_PART:
+    builtin print
+      ref pre
+

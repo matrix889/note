@@ -11,7 +11,7 @@
 #include <algorithm>
 using namespace std;
 
-const int nameSize = 50;
+const int nameSize = 150;
 int ROWS;
 int n;
 fstream input, output;
@@ -63,6 +63,7 @@ char* makeDir(char stategyName[]){
     sscanf(stategyName, "%[^.]", dirName);
     strcat(cmd, "mkdir ../stategy/");
     strcat(cmd, dirName);
+    strcat(cmd, " 2>/dev/null");
 
     system(cmd);
     //delete []dirName;
@@ -97,11 +98,13 @@ void solve(){
     memset(fileName, 0, sizeof(char) * nameSize);
     input.open("../stategy_name.txt", ios::in);
 
+    cout << "策略名：" << endl;
     while (input >> fileName){
         if (input.eof()) break;
         makeDir(fileName);
         //rmDir(fileName);
     }
+    //cout << endl << endl;
     input.close();
 }
 
@@ -194,6 +197,45 @@ int fight(char *stategy1, char *stategy2, int rows){
     return score1;
 }
 
+char* getStategyDir(char *fileName){
+    char *cmd = new char[nameSize], *tmp = new char[nameSize];
+    memset(cmd, 0, sizeof(char) * nameSize);
+    strcat(cmd, "../stategy/");
+    sscanf(fileName, "%[^.]", tmp);
+    strcat(cmd, tmp);
+    strcat(cmd, "/");
+
+    delete []tmp;
+    return cmd;
+}
+
+
+void getPasteTree(char *fileName){
+    char *cmd = new char[nameSize], *path = "./../work/work < ";
+    char *stategyDir, *stategyPath = new char[nameSize];
+    char *pasteTree = new char[nameSize];
+
+    memset(cmd, 0, sizeof(char) * nameSize);
+    memset(stategyPath, 0, sizeof(char) * nameSize);
+    memset(pasteTree, 0, sizeof(char) * nameSize);
+    stategyDir = getStategyDir(fileName);
+    strcat(stategyPath, "../stategy/");
+    strcat(stategyPath, fileName);
+    strcat(cmd, path);
+    strcat(cmd, stategyPath);
+    strcat(cmd, " > ");
+    //input.open(fileName, ios::in);
+
+    //strcat(pasteTree, getStategyDir(fileName));
+    strcat(pasteTree, stategyDir);
+    strcat(pasteTree, "paste.txt");
+
+    strcat(cmd, pasteTree);
+    system(cmd);
+    delete []cmd;
+    input.close();
+}
+
 char s[nameSize];
 void cmpStategies(){
     system("ls ../stategy/*.w | cut -d '/' -f 3 > ../stategy_name.txt");
@@ -203,8 +245,11 @@ void cmpStategies(){
     while (input >> s){
         q.push_back(node(s, 0));
     }
-    for (int i = 0; i < q.size(); ++i)
+    for (int i = 0; i < q.size(); ++i){
         cout << q[i].stategy << endl;
+        getPasteTree(q[i].stategy);
+    }
+    cout << endl;
 
     for (int i = 0; i < q.size(); ++i){
         for (int j = 0; j < q.size(); ++j){
@@ -214,23 +259,68 @@ void cmpStategies(){
         }
     }
     sort(q.begin(), q.end());
+    cout << "排名     " << "得分" << endl;
     for (int i = 0; i < q.size(); ++i)
-        cout << q[i].stategy << " " << q[i].score << endl;
-    output.open("sort.txt", ios::out);
+        cout << q[i].stategy << "     " << q[i].score << endl;
+    cout << endl;
+
+    output.open("../sort.txt", ios::out);
     for (int i = 0; i < q.size(); ++i)
         output << q[i].stategy << " " << q[i].score << endl;
 }
 
+void showPasteTree(char *name){
+    char *cmd = new char[nameSize];
+    memset(cmd, 0, sizeof(char) * nameSize);
+    strcat(cmd, "gedit ");
+    strcat(cmd, getStategyDir(name));
+    strcat(cmd, "paste.txt");
+    system(cmd);
+    delete []cmd;
+}
+
 int main(){
 	//cin >> n;
+	cout << "当前目录为：" << endl;
     system("echo $PWD");
-    solve();
+    cout << endl;
+
     ROWS = 50;
 	//runStategy(" < ../stategy/T1.w", 0);
 	//runStategy(getStategy((char*)"T1.w"), 0);
 	//makeDir((char*)"T1.w");
 	//fight("T1.w", "T2.w", 50);
-	cmpStategies();
     //cout << "Hello world!" << endl;
+    int CMD, ok = 0;
+    do{
+        cout << "请输入指令,0退出，1代表进行对战，2代表输入新策略,3查看策略对应的语法树" << endl;
+        cin >> CMD;
+        //cout << endl;
+        if (CMD == 1){
+            cout << "请输对战轮数：";
+            cin >> ROWS;
+            cout << endl;
+            solve();
+            cmpStategies();
+            ok = 1;
+        }
+        else if (CMD == 2){
+            system("gedit");
+            cout << "(1)请输入策略，并以后缀名为.w的文件保存在stategy文件夹中！！！" << endl;
+            cout << "(2)接口函数名为：function T(gameRows, Ones, pre, prePre)" << endl;
+            cout << "(3)其中，gameRows代表当前进行到游戏的第几轮，Ones表示已经选择了多少个1，pre表示上一轮对手的选择，prePre代表上自己的选择。" << endl;
+            ok = 0;
+        }
+        else if (CMD == 3){
+            if (!ok) cout << "请先输入指令2以生成语法树!" << endl;
+            else{
+                cout << "请输入要查看的策略名:" << endl;
+                char *name = new char[nameSize];
+                cin >> name;
+                showPasteTree(name);
+                delete[] name;
+            }
+        }
+    }while (CMD != 0);
     return 0;
 }
