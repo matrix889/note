@@ -12,4 +12,4 @@ function T(gameRows, Ones, pre, prePre){\
 		};\
 	};\
 }
-T(10,1,0,0)
+T(100,1,0,0)
