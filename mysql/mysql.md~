@@ -41,7 +41,7 @@ select * from mysql.user;
 
 　　mysql> FLUSH PRIVILEGES;
 
-4. MySQL错误提示消息中“Error”显示为“Erreur”
+4. 
 
 
 

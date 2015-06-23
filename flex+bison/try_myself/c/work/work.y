@@ -51,6 +51,10 @@ stmt: IF exp THEN '{' list '}'           { $$ = newflow('I', $2, $5, NULL); }
       $$ = newflow('I', $2, $5, $8); 
     }
    | WHILE exp DO '{' list '}'      { $$ = newflow('W', $2, $5, NULL); }
+   | WHILE exp '{' list '}'      { 
+        yyerror("lack the DO in the WHILE-STATEMENT!!!");
+        $$ = newflow('W', $2, $4, NULL); 
+      }
    | exp
 ;
 

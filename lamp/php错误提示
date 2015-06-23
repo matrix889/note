@@ -1,0 +1,45 @@
+开启Ubuntu下lamp的php错误提示
+
+Ubuntu下默认的lamp模式是没有php语法错误提示的，如果要开启，需要修改几个地方：
+
+1. 打开php.ini文件。
+
+这个文件在： /etc/php5/apache2 目录下，需要修改这个文件的权限才能写入。
+
+sudo chmod 777 /etc/php5/apache2/php.ini
+
+ 
+
+2. 搜索并修改下行，把Off值改成On
+
+display_errors = Off
+
+3. 搜索下行
+
+error_reporting = E_ALL & ~E_NOTICE
+
+或者搜索：
+
+error_reporting = E_ALL & ~E_DEPRECATED
+
+修改为
+
+error_reporting = E_ALL | E_STRICT
+
+4. 修改Apache的 httpd.conf，
+
+这个文件在：/etc/apache2/ 目录下，这是一个空白文件,同样这个文件也需要修改权限。
+
+sudo chmod 777 /etc/apache2/ httpd.conf
+
+添加以下两行：
+
+php_flag display_errors on php_value error_reporting 2039
+
+5. 重启Apache，就OK了。
+
+重启命令：
+
+sudo /etc/init.d/apache2 restart
+
+ok! 错误提示成功开启!以上就是Ubuntu下LAMP的PHP错误提示的开启方法。

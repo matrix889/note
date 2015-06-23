@@ -484,6 +484,16 @@ dumpast(struct ast *a, int level, int inList)
     dumpast(a->l, level, 0);
     dumpast(a->r, level, 1);
     return;
+  case 'A':
+    printf("logical operator AND\n");
+    dumpast(a->l, level, 0);
+    dumpast(a->r, level, 0);
+    return;
+  case 'O':
+    printf("logical operator OR\n");
+    dumpast(a->l, level, 0);
+    dumpast(a->r, level, 0);
+    return;
   case '+': case '-': case '*': case '/': 
   case '1': case '2': case '3':
   case '4': case '5': case '6': 
